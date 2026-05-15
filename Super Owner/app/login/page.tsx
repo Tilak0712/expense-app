@@ -6,12 +6,14 @@ import { createClient } from '@supabase/supabase-js'
 import { ShieldCheck, Lock, User, Loader2, ArrowRight, Zap, Globe, Shield } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
+import { Suspense } from 'react'
+
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
   process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
 )
 
-export default function LoginPage() {
+function LoginContent() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const [empId, setEmpId] = useState('')
@@ -184,5 +186,17 @@ export default function LoginPage() {
         </div>
       </div>
     </div>
+  )
+}
+
+export default function LoginPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen flex items-center justify-center bg-[#f8fafc]">
+        <Loader2 className="w-10 h-10 animate-spin text-indigo-600" />
+      </div>
+    }>
+      <LoginContent />
+    </Suspense>
   )
 }

@@ -4,15 +4,11 @@ import { useState, useEffect } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { getSupabaseBrowserClient } from '@/lib/supabase/client'
 
+import { Suspense } from 'react'
+
 const supabase = getSupabaseBrowserClient()
 
-const roleConfig = {
-  employee: { label: 'Employee Portal', badgeClass: 'bg-blue-100 text-blue-700', idLabel: 'Employee ID', placeholder: 'EMP-001', redirect: '/dashboard' },
-  manager: { label: 'Manager Portal', badgeClass: 'bg-amber-100 text-amber-700', idLabel: 'Manager ID', placeholder: 'MGR-001', redirect: 'http://localhost:3001/login' },
-  finance: { label: 'Finance Portal', badgeClass: 'bg-emerald-100 text-emerald-700', idLabel: 'Finance ID', placeholder: 'FIN-001', redirect: 'http://localhost:3002' }
-}
-
-export default function LoginPage() {
+function LoginContent() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const [mode, setMode] = useState('login')
@@ -218,5 +214,23 @@ export default function LoginPage() {
         </div>
       </div>
     </div>
+  )
+}
+
+const roleConfig = {
+  employee: { label: 'Employee Portal', badgeClass: 'bg-blue-100 text-blue-700', idLabel: 'Employee ID', placeholder: 'EMP-001', redirect: '/dashboard' },
+  manager: { label: 'Manager Portal', badgeClass: 'bg-amber-100 text-amber-700', idLabel: 'Manager ID', placeholder: 'MGR-001', redirect: 'http://localhost:3001/login' },
+  finance: { label: 'Finance Portal', badgeClass: 'bg-emerald-100 text-emerald-700', idLabel: 'Finance ID', placeholder: 'FIN-001', redirect: 'http://localhost:3002' }
+}
+
+export default function LoginPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen flex items-center justify-center bg-gray-50">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+      </div>
+    }>
+      <LoginContent />
+    </Suspense>
   )
 }
