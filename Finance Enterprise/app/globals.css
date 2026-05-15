@@ -1,0 +1,89 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* SAP Fiori Inspired Professional Theme - EXACT MATCH WITH EMPLOYEE POV */
+    --background: #f5f6f7;
+    --foreground: #32363a;
+    --card: #ffffff;
+    --card-foreground: #32363a;
+    --popover: #ffffff;
+    --popover-foreground: #32363a;
+    --primary: #0a6ed1;
+    --primary-foreground: #ffffff;
+    --secondary: #eaecee;
+    --secondary-foreground: #515559;
+    --muted: #f5f6f7;
+    --muted-foreground: #6a6d70;
+    --accent: #e5f0fa;
+    --accent-foreground: #0a6ed1;
+    --destructive: #bb0000;
+    --destructive-foreground: #ffffff;
+    --border: #d9d9d9;
+    --input: #f5f6f7;
+    --ring: #0a6ed1;
+    --radius: 0.5rem;
+
+    --sidebar: #354a5f;
+    --sidebar-foreground: rgba(255, 255, 255, 0.85);
+    --sidebar-primary: #ffffff;
+    --sidebar-primary-foreground: #354a5f;
+    --sidebar-accent: rgba(255, 255, 255, 0.1);
+    --sidebar-accent-foreground: #ffffff;
+    --sidebar-border: rgba(255, 255, 255, 0.1);
+    --sidebar-ring: #ffffff;
+  }
+
+  .dark {
+    --background: #1d232a;
+    --foreground: #edeff0;
+    --card: #29313a;
+    --card-foreground: #edeff0;
+    --popover: #29313a;
+    --popover-foreground: #edeff0;
+    --primary: #5899da;
+    --primary-foreground: #ffffff;
+    --secondary: #354a5f;
+    --secondary-foreground: #d1e0ee;
+    --muted: #354a5f;
+    --muted-foreground: #a9b4be;
+    --accent: #3d5269;
+    --accent-foreground: #d1e0ee;
+    --destructive: #ff5c5c;
+    --destructive-foreground: #ffffff;
+    --border: #4a5764;
+    --input: #354a5f;
+    --ring: #5899da;
+    --sidebar: #0f1419;
+    --sidebar-foreground: rgba(255, 255, 255, 0.85);
+  }
+}
+
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+  }
+}
+
+/* Matching Utility Classes from Employee POV */
+.font-manrope {
+  font-family: var(--font-manrope), sans-serif;
+}
+
+.shell-gradient {
+  background: linear-gradient(135deg, #354a5f 0%, #2c3e50 100%);
+}
+
+.sap-table-row:hover {
+  background-color: #e5f0fa;
+}
+
+.tile-shadow {
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.05), 0 2px 4px rgba(0,0,0,0.05);
+}

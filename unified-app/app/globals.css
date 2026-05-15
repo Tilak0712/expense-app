@@ -1,0 +1,201 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* SAP Fiori Inspired Professional Theme */
+  --background: #f5f6f7;
+  --foreground: #32363a;
+  --card: #ffffff;
+  --card-foreground: #32363a;
+  --popover: #ffffff;
+  --popover-foreground: #32363a;
+  --primary: #0a6ed1;
+  --primary-foreground: #ffffff;
+  --secondary: #eaecee;
+  --secondary-foreground: #515559;
+  --muted: #f5f6f7;
+  --muted-foreground: #6a6d70;
+  --accent: #e5f0fa;
+  --accent-foreground: #0a6ed1;
+  --destructive: #bb0000;
+  --destructive-foreground: #ffffff;
+  --border: #d9d9d9;
+  --input: #f5f6f7;
+  --ring: #0a6ed1;
+  --chart-1: #0a6ed1;
+  --chart-2: #1a9898;
+  --chart-3: #5899da;
+  --chart-4: #e8743b;
+  --chart-5: #19a979;
+  --radius: 0.5rem;
+
+  /* SAP Extended Tokens */
+  --surface: #f5f6f7;
+  --surface-elevated: #ffffff;
+  --shell: #354a5f;
+  --shell-foreground: #ffffff;
+  --positive: #107e3e;
+  --critical: #e9730c;
+  --negative: #bb0000;
+  --informative: #0a6ed1;
+
+  --sidebar: #354a5f;
+  --sidebar-foreground: rgba(255, 255, 255, 0.85);
+  --sidebar-primary: #ffffff;
+  --sidebar-primary-foreground: #354a5f;
+  --sidebar-accent: rgba(255, 255, 255, 0.1);
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: rgba(255, 255, 255, 0.1);
+  --sidebar-ring: #ffffff;
+}
+
+.dark {
+  --background: #1d232a;
+  --foreground: #edeff0;
+  --card: #29313a;
+  --card-foreground: #edeff0;
+  --popover: #29313a;
+  --popover-foreground: #edeff0;
+  --primary: #5899da;
+  --primary-foreground: #ffffff;
+  --secondary: #354a5f;
+  --secondary-foreground: #d1e0ee;
+  --muted: #354a5f;
+  --muted-foreground: #a9b4be;
+  --accent: #3d5269;
+  --accent-foreground: #d1e0ee;
+  --destructive: #ff5c5c;
+  --destructive-foreground: #ffffff;
+  --border: #4a5764;
+  --input: #354a5f;
+  --ring: #5899da;
+  --surface: #1d232a;
+  --surface-elevated: #29313a;
+  --shell: #0f1419;
+  --shell-foreground: #ffffff;
+  --sidebar: #0f1419;
+  --sidebar-foreground: rgba(255, 255, 255, 0.85);
+}
+
+@theme inline {
+  --font-sans: 'Inter', '72', sans-serif;
+  --font-serif: 'Inter', '72', sans-serif;
+  --font-mono: 'JetBrains Mono', 'Geist Mono', monospace;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 2px);
+  --radius-md: var(--radius);
+  --radius-lg: calc(var(--radius) + 2px);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* SAP Shell Header Gradient */
+.shell-gradient {
+  background: linear-gradient(135deg, #354a5f 0%, #2c3e50 100%);
+}
+
+/* Positive/Success background */
+.bg-positive {
+  background-color: #f1fdf6;
+}
+.text-positive {
+  color: #107e3e;
+}
+.border-positive {
+  border-color: #107e3e;
+}
+
+/* Critical/Warning background */
+.bg-critical {
+  background-color: #fff8f0;
+}
+.text-critical {
+  color: #e9730c;
+}
+.border-critical {
+  border-color: #e9730c;
+}
+
+/* Negative/Error background */
+.bg-negative {
+  background-color: #fff5f5;
+}
+.text-negative {
+  color: #bb0000;
+}
+.border-negative {
+  border-color: #bb0000;
+}
+
+/* Informative background */
+.bg-informative {
+  background-color: #e5f0fa;
+}
+.text-informative {
+  color: #0a6ed1;
+}
+.border-informative {
+  border-color: #0a6ed1;
+}
+
+/* Object Page Header */
+.object-page-header {
+  background: linear-gradient(180deg, #ffffff 0%, #f5f6f7 100%);
+}
+
+/* Tile Shadow */
+.tile-shadow {
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.05), 0 2px 4px rgba(0,0,0,0.05);
+}
+
+/* SAP Table Row Hover */
+.sap-table-row:hover {
+  background-color: #e5f0fa;
+}
+
+/* Focus visible for accessibility */
+.focus-ring:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
