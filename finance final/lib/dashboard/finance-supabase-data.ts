@@ -189,7 +189,7 @@ async function loadEmployeeLookupForClaims(
     .or(`user_id.in.(${employeeUserIds.join(',')}),id.in.(${employeeUserIds.join(',')})`)
 
   if (profileData) {
-    for (const row of profileData) {
+    for (const row of profileData as any[]) {
       const entry = {
         employeeId: row.employee_id || row.id || row.user_id,
         employeeName: row.full_name || 'Employee'

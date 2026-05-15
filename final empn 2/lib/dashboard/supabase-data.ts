@@ -490,23 +490,25 @@ export async function fetchClaimById(claimId: string): Promise<DashboardClaim> {
   if (error) throw error
   if (!data) throw new Error('Claim not found')
 
+  const claim = data as any
   return {
-    id: data.id,
-    claimNumber: data.claim_number,
-    description: data.description,
-    category: data.category,
-    amount: data.amount,
-    currency: data.currency,
-    status: data.status,
-    expenseDate: data.expense_date,
-    paymentMode: data.payment_mode,
-    project: data.project_name,
-    vendorName: data.vendor_name,
-    city: data.city,
-    receiptUrl: data.receipt_url,
-    createdAt: data.created_at,
-    submittedAt: data.submitted_at,
+    id: claim.id,
+    claimNumber: claim.claim_number,
+    description: claim.description,
+    category: claim.category,
+    amount: claim.amount,
+    currency: claim.currency,
+    status: claim.status,
+    expenseDate: claim.expense_date,
+    paymentMode: claim.payment_mode,
+    project: claim.project_name,
+    vendorName: claim.vendor_name,
+    city: claim.city,
+    receiptUrl: claim.receipt_url,
+    createdAt: claim.created_at,
+    submittedAt: claim.submitted_at,
   }
+
 }
 
 // Dashboard stats helpers

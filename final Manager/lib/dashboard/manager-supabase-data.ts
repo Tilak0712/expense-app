@@ -287,15 +287,15 @@ async function enrichClaimEmployeeNames(supabase: ReturnType<typeof getSupabaseB
   const [profilesByIdResult, profilesByEmployeeIdResult] = await Promise.all([
     uuidRefs.length > 0
       ? supabase.from('profiles').select('id, employee_id, full_name').in('id', uuidRefs)
-      : Promise.resolve({ data: [], error: null } as any),
+      : Promise.resolve({ data: [] as DbProfile[], error: null } as any),
     employeeIdRefs.length > 0
       ? supabase.from('profiles').select('id, employee_id, full_name').in('employee_id', employeeIdRefs)
-      : Promise.resolve({ data: [], error: null } as any),
+      : Promise.resolve({ data: [] as DbProfile[], error: null } as any),
   ])
 
-  const byIdMap = new Map((profilesByIdResult.data || []).map((profile: any) => [profile.id, profile]))
+  const byIdMap = new Map((profilesByIdResult.data || []).map((profile: any) => [profile.id, profile as DbProfile]))
   const byEmployeeIdMap = new Map(
-    (profilesByEmployeeIdResult.data || []).map((profile: any) => [profile.employee_id, profile])
+    (profilesByEmployeeIdResult.data || []).map((profile: any) => [profile.employee_id, profile as DbProfile])
   )
 
   return claims.map((claim) => {

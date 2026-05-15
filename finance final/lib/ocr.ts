@@ -30,10 +30,11 @@ export async function preloadOCRWorker() {
  * Requires googleCloudVisionApiKey in config.json
  */
 async function performGoogleVisionOCR(file: File, onProgress?: (progress: number) => void): Promise<OCRResult> {
-  const apiKey = config.googleCloudVisionApiKey
+  // Use environment variable for the API key to avoid exposing it in config.json
+  const apiKey = process.env.NEXT_PUBLIC_GOOGLE_VISION_API_KEY || (config as any).googleCloudVisionApiKey
   
   if (!apiKey || apiKey === 'your_google_cloud_vision_api_key_here') {
-    throw new Error('Google Cloud Vision API key not found. Set googleCloudVisionApiKey in config.json')
+    throw new Error('Google Cloud Vision API key not found. Please set NEXT_PUBLIC_GOOGLE_VISION_API_KEY in your environment variables.')
   }
 
   console.log('🔍 OCR DEBUG: Using Google Cloud Vision API')
